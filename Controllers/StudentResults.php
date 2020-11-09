@@ -6,6 +6,12 @@ class StudentResults
     const CSM = 'CSM';
     const CSMB = 'CSMB';
 
+
+    /**
+     * The function returns student results
+     * @param $id
+     * @return false|string
+     */
     public function getStudentResult($id) {
         $student = Student::find($id);
 
@@ -18,6 +24,7 @@ class StudentResults
 
         if($numOfStudentGrades >= 1 && $numOfStudentGrades <=4) {
 
+            //Check criteria for CSM students
             if($studentBoard == self::CSM) {
                 $grades = $this->getGrades($id);
                 $studentInfo[0]['averageGrade'] = $averageGrade;
@@ -26,6 +33,7 @@ class StudentResults
                 $result = json_encode($studentInfo);
             }
 
+            //Check criteria for CSMB students
             if($studentBoard == self::CSMB) {
                 $grades = $this->getGrades($id);
                 if($numOfStudentGrades > 2) {
@@ -41,6 +49,7 @@ class StudentResults
                 $result = $this->createXML($studentInfo[0]);
 
             }
+
             return $result;
         } else {
             return "The student doesn't have the required number of grades.";
