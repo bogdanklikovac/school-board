@@ -38,7 +38,7 @@ class StudentResults
                 $studentInfo[0]['grades'] = $grades;
                 $studentInfo[0]['status'] = ($biggestGrade > 8) ? 'PASS' : 'FAIL';
 
-                $result = $studentInfo[0];
+                $result = $this->createXML($studentInfo[0]);
 
             }
             return $result;
@@ -72,5 +72,30 @@ class StudentResults
         return array_values($grades);
     }
 
+    public function createXML($array) {
+
+        $xml = new DOMDocument('1.0');
+        $xml->formatOutput = true;
+        $schoolBoard = $xml->createElement('schoolBoard');
+        $xml->appendChild($schoolBoard);
+
+        $student = $xml->createElement('studentInfo');
+        $schoolBoard->appendChild($student);
+        foreach ($array as $key=>$val) {
+            if(is_array($val)) {
+                $grades = $xml->createElement('grades');
+                $student->appendChild($grades);
+                foreach ($val as $grade) {
+                    $grade = $xml->createElement('grade', $grade);
+                    $grades->appendChild($grade);
+                }
+            } else {
+                $info = $xml->createElement($key, $val);
+                $student->appendChild($info);
+            }
+
+        }
+        return "<xmp>" . $xml->saveXML(). "</xmp>";
+    }
 
 }
