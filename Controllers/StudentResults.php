@@ -19,12 +19,27 @@ class StudentResults
         if($numOfStudentGrades >= 1 && $numOfStudentGrades <=4) {
 
             if($studentBoard == self::CSM) {
-                //return Student::find($id)->toArray();
                 $grades = $this->getGrades($id);
                 $studentInfo[0]['averageGrade'] = $averageGrade;
                 $studentInfo[0]['grades'] = $grades;
                 $studentInfo[0]['status'] = ($averageGrade >= 7) ? 'PASS' : 'FAIL';
                 $result = json_encode($studentInfo);
+            }
+
+            if($studentBoard == self::CSMB) {
+                $grades = $this->getGrades($id);
+                if($numOfStudentGrades > 2) {
+                    sort($grades, SORT_NUMERIC);
+                    array_shift($grades);
+                }
+                $biggestGrade = end($grades);
+
+                $studentInfo[0]['averageGrade'] = $averageGrade;
+                $studentInfo[0]['grades'] = $grades;
+                $studentInfo[0]['status'] = ($biggestGrade > 8) ? 'PASS' : 'FAIL';
+
+                $result = $studentInfo[0];
+
             }
             return $result;
         } else {
