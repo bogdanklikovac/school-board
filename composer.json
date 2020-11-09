@@ -2,5 +2,9 @@
     "require": {
         "illuminate/database": "^7.29",
         "illuminate/events": "^7.29"
+    },
+    "autoload": {
+        "files": ["db.php"],
+        "classmap": ["Models", "Controllers"]
     }
 }

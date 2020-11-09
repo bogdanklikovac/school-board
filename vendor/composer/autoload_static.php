@@ -15,6 +15,7 @@ class ComposerStaticInit1d5bce0fb7096ec842735811c6a8fe3c
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+        'c2f08998e6b69081864366337527ba6f' => __DIR__ . '/../..' . '/db.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -148,9 +149,13 @@ class ComposerStaticInit1d5bce0fb7096ec842735811c6a8fe3c
 
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Board' => __DIR__ . '/../..' . '/Models/Board.php',
+        'Grade' => __DIR__ . '/../..' . '/Models/Grade.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'Student' => __DIR__ . '/../..' . '/Models/Student.php',
+        'StudentResults' => __DIR__ . '/../..' . '/Controllers/StudentResults.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
